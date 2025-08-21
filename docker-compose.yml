@@ -1,0 +1,40 @@
+version: "3.9"
+
+services:
+  app:
+    build: .
+    container_name: catchai_app
+    ports:
+      - "8501:8501"
+    environment:
+      - OLLAMA_BASE_URL=http://ollama:11434
+      - CHROMA_DIR=/workspace/data/chroma
+      - HF_HOME=/workspace/models/cache
+    volumes:
+      - ./app:/workspace/app
+      - ./data:/workspace/data
+      - ./models:/workspace/models
+    working_dir: /workspace   
+    depends_on:
+      - chroma
+      - ollama
+
+
+  chroma:
+    image: ghcr.io/chroma-core/chroma:latest
+    container_name: catchai_chroma
+    environment:
+      - ALLOW_RESET=TRUE
+    volumes:
+      - ./data/chroma:/chroma/chroma
+    ports:
+      - "8000:8000"
+
+  ollama:
+    image: ollama/ollama:latest
+    container_name: catchai_ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ./models:/root/.ollama
+    command: ["serve"]

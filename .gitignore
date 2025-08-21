@@ -1,0 +1,25 @@
+# Entornos virtuales
+.venv-1/
+.venv/
+
+# Cachés de modelos y descargas pesadas
+models/cache/
+models/models/
+
+# Archivos de datos generados
+data/
+
+# Docker
+*.log
+*.env
+docker-compose.override.yml
+
+# Bytecode de Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Mac / Windows
+.DS_Store
+Thumbs.db

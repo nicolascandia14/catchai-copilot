@@ -1,0 +1,20 @@
+# Ignorar caché de modelos y librerías
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.sqlite
+
+# Ignorar entornos virtuales
+.venv/
+env/
+venv/
+
+# Ignorar dependencias locales
+node_modules/
+
+# Ignorar cachés de HuggingFace / SentenceTransformers
+models/
+.cache/
+hub/
